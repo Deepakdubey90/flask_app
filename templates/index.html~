@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div layout="row" layout-sm="column">
+  <div flex>
+    I'm above on mobile, and to the left on larger devices.
+  </div>
+  <div flex>
+    I'm below on mobile, and to the right on larger devices.
+  </div>
+</div>
+<!--center><h2>Hello World!!!</h2></center-->
+{% endblock %}

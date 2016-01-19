@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Bucket List App</title>
+
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+	  href="{{url_for('static',
+		filename='signup.css')}}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+	<nav>
+	  <ul class="nav nav-pills pull-right">
+	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
+	    <li role="presentation"><a href="#">About</a></li>
+	    <li role="presentation"><a href="#">Service</a></li>
+	    <li role="presentation"><a href="#">Portfolio</a></li>
+	    <li role="presentation"><a href="showSignIn">Sign In</a></li>
+	    <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+	  </ul>
+	</nav>
+	<h3 class="text-muted">Python Flask App</h3>
+      </div>
+      <div class="jumbotron">
+	<img src="static/img/signup1.jpg">
+	<form class="form-signin">
+	  <label for="inputName" class="sr-only">Name</label><br>
+	  <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+	  <label for="inputEmail" class="sr-only">Email address</label><br>
+	  <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
+	  <label for="inputPassword" class="sr-only">Password</label>
+	  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required><br>
+
+	  <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+	</form>
+      </div>
+      <footer class="footer">
+	<p>&copy; Company 2016</p>
+      </footer>
+    </div>
+  </body>
+</html>
