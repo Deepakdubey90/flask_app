@@ -12,18 +12,21 @@
   <body>
     <div class="container">
       <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" class="active"><a href="#">Home</a></li>
-	    <li role="presentation"><a href="#">About</a></li>
-	    <li role="presentation"><a href="showServices">Service</a></li>
-	    <li role="presentation"><a href="showPortfolio">Portfolio</a></li>
-	    <li role="presentation"><a href="showSignIn">Sign In</a></li>
-	    <li role="presentation"><a href="showSignUp">Sign Up</a>
-	    </li>
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="/showServices">Service</a></li>
+            <li role="presentation"><a href="/showPortfolio">Portfolio</a></li>
+            {% if current_user.is_authenticated %}
+            <li role="presentation"><a href="/logout">Logout</a></li>
+            {% else %}
+            <li role="presentation"><a href="/signIn">Login</a></li>
+            <li role="presentation"><a href="/signUp">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted">@Flask App</h3>
       </div>
       {% block body %}{% endblock %}
     </div>

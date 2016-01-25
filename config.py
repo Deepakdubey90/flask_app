@@ -1,7 +1,7 @@
 import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-file_path = os.path.abspath(os.getcwd())+"/models.db"
-os.environ['DATABASE_URL']="sqlite:///"+file_path
+os.environ['DATABASE_URL'] = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 class Config(object):
     DEBUG = False
