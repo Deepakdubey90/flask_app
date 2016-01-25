@@ -5,48 +5,48 @@
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet"
-          href="{{url_for('static',
-                filename='signup.css')}}" />
+	  href="{{url_for('static',
+		filename='signup.css')}}" />
     <script src="/static/js/jquery-1.11.2.js"></script>
     <script src="/static/js/signup.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Service</a></li>
-            <li role="presentation"><a href="#">Portfolio</a></li>
-            {% if current_user.is_authenticated %}
-            <li role="presentation"><a href="/logout">Logout</a></li>
-            {% else %}
-            <li role="presentation"><a href="/signIn">Login</a></li>
-            <li role="presentation"><a href="/signUp">Register</a></li>
-            {% endif %}
-          </ul>
-        </nav>
-        <h3 class="text-muted">@Flask App</h3>
+	<nav>
+	  <ul class="nav nav-pills pull-right">
+	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
+	    <li role="presentation"><a href="#">About</a></li>
+	    <li role="presentation"><a href="#">Service</a></li>
+	    <li role="presentation"><a href="#">Portfolio</a></li>
+	    {% if current_user.is_authenticated %}
+	    <li role="presentation" class="active"><a href="/logout">Logout</a></li>
+	    {% else %}
+	    <li role="presentation"><a href="/signIn">Login</a></li>
+	    <li role="presentation" class="active"><a href="/signUp">Register</a></li>
+	    {% endif %}
+	  </ul>
+	</nav>
+	<h3 class="text-muted">@Flask App</h3>
       </div>
       <div class="jumbotron">
-        <img src="static/img/signup1.jpg">
-        <form class="form-signin">
-          <label for="inputName" class="sr-only">User Name</label><br>
-          <input type="name" name="userName" id="userName" class="form-control" placeholder="User Name" required autofocus>
-          <label for="inputName" class="sr-only">First Name</label><br>
-          <input type="name" name="firstName" id="firstName" class="form-control" placeholder="First Name" required autofocus>
-          <label for="inputName" class="sr-only">Last Name</label><br>
-          <input type="name" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required autofocus>
-          <label for="inputEmail" class="sr-only">Email address</label><br>
-          <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus><br>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
-          <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
-        </form>
+	<img src="static/img/signup1.jpg">
+	<form class="form-signin">
+	  <label for="inputName" class="sr-only">User Name</label><br>
+	  <input type="name" name="userName" id="userName" class="form-control" placeholder="User Name" required autofocus>
+	  <label for="inputName" class="sr-only">First Name</label><br>
+	  <input type="name" name="firstName" id="firstName" class="form-control" placeholder="First Name" required autofocus>
+	  <label for="inputName" class="sr-only">Last Name</label><br>
+	  <input type="name" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required autofocus>
+	  <label for="inputEmail" class="sr-only">Email address</label><br>
+	  <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus><br>
+	  <label for="inputPassword" class="sr-only">Password</label>
+	  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
+	  <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+	</form>
       </div>
       <footer class="footer">
-        <p>&copy; Company 2016</p>
+	<p>&copy; Company 2016</p>
       </footer>
     </div>
   </body>
