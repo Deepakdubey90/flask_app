@@ -1,4 +1,5 @@
 from app import db
+from werkzeug import generate_password_hash, check_password_hash
 
 
 class User(db.Model):
@@ -15,9 +16,13 @@ class User(db.Model):
     password = db.Column(db.String(128))
     contact = db.Column(db.String(128))
 
-    def __init__(self, username, password):
+    def __init__(self,
+                 username, password, firstname, lastname, email):
         self.username = username
-        self.password = password
+        self.set_password(password)
+        self.first_name = firstname
+        self.last_name = lastname
+        self.email = email
 
     def is_authenticated(self):
         return True
@@ -31,6 +36,11 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
+    def set_password(self, password):
+        self.pwdhash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.pwdhash, password)
 
     def __repr__(self):
         return '<username {}>'.format(self.username)
