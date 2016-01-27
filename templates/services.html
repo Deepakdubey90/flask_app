@@ -14,15 +14,15 @@
       <div class="header">
 	<nav>
 	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" ><a href="#">Home</a></li>
-	    <li role="presentation"><a href="/about">About</a></li>
+	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
+	    <li role="presentation"><a href="{{ url_for('about') }}">About</a></li>
 	    <li role="presentation" class="active"><a href="/showServices">Service</a></li>
-	    <li role="presentation"><a href="/showPortfolio">Portfolio</a></li>
+	    <li role="presentation"><a href="{{ url_for('showPortfolio') }}">Portfolio</a></li>
 	    {% if current_user.is_authenticated %}
 	    <li role="presentation"><a href="/logout">Logout</a></li>
 	    {% else %}
-	    <li role="presentation"><a href="/signIn">Login</a></li>
-	    <li role="presentation"><a href="/signUp">Register</a></li>
+	    <li role="presentation"><a href="{{ url_for('signIn') }}">Login</a></li>
+	    <li role="presentation"><a href="{{ url_for('signUp') }}">Register</a></li>
 	    {% endif %}
 	  </ul>
 	</nav>
