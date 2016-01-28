@@ -5,8 +5,6 @@ Flask App
 
 ### Requirements
 * Python 2.7.6
-* sqlite
-
 
 ### Installation
 * Clone the repository  ```$ git clone https://github.com/Deepakdubey90/flask_app.git```
