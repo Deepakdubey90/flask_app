@@ -20,3 +20,7 @@ Flask App
 
 ### Running the app
 * ```$ python manage.py runserver```
+
+### Test data on rest-api
+* show list of all users ```http://127.0.0.1:5000/api/user```
+* show specific user details ```http://127.0.0.1:5000/api/user/id```
