@@ -13,6 +13,8 @@ import config
 os.environ['APP_SETTINGS']="config.DevelopmentConfig"
 app = flask.Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
+
+app = Flask(__name__, static_url_path='/static')
 CsrfProtect(app)
 
 csrf = CsrfProtect()
@@ -24,6 +26,7 @@ db = SQLAlchemy(app)
 from models import User # specify the models which you have defined.
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3')
+
 
 from routes import *
 
