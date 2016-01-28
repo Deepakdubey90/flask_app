@@ -17,8 +17,8 @@ Flask App
 
 ### Database setup
 * Initialize database  ```$ python manage.py init db```
-* Create migration by running '''$ python manage.py db migrate'''
-* Upgrade database by by running '''$ python manage.py db upgrade'''
+* Create migration by running ```$ python manage.py db migrate```
+* Upgrade database by by running ```$ python manage.py db upgrade```
 
 ### Running the app
 * ```$ python manage.py runserver```
