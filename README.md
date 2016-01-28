@@ -16,7 +16,7 @@ Flask App
 * Install the required libraries ```$ pip install -r requirements.txt```
 
 ### Database setup
-* Initialize database  ```$ python manage.py init db```
+* Initialize database  ```$ python manage.py db init```
 * Create migration by running ```$ python manage.py db migrate```
 * Upgrade database by by running ```$ python manage.py db upgrade```
 
