@@ -24,9 +24,9 @@ login_manager.init_app(app)
 
 db = SQLAlchemy(app)
 from models import User # specify the models which you have defined.
+import views
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3')
-
 
 from routes import *
 
@@ -37,4 +37,3 @@ if __name__ == '__main__':
     db.session.add(x)
     db.session.commit()
     app.debug=True
-    app.run()
