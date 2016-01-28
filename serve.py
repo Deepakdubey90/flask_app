@@ -5,7 +5,7 @@ import waitress
 BASE_DIR = os.path.join(os.path.dirname(__file__), 'src')
 sys.path.append(BASE_DIR)
 
-from app import application
+from app import app
 waitress.serve(
     app,
     host='0.0.0.0',
