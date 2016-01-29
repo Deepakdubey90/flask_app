@@ -2,7 +2,7 @@ import os
 import sys
 import waitress
 
-BASE_DIR = os.path.join(os.path.dirname(__file__))
+BASE_DIR = os.path.join(os.path.dirname(__file__), '.')
 sys.path.append(BASE_DIR)
 
 from app import app
