@@ -3,7 +3,7 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 import config
 from app import app, db
-from waitress import serve
+
 
 
 os.environ['APP_SETTINGS']="config.DevelopmentConfig"
