@@ -22,4 +22,5 @@ if __name__ == "__main__":
     #app.run(host='0.0.0.0', port=port)
 else:
     os.environ['APP_SETTINGS']="config.ProductionConfig"
+    manager.run()
     serve(app, port=port)
