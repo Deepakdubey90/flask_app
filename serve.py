@@ -2,12 +2,12 @@ import os
 import sys
 import waitress
 
-BASE_DIR = os.path.join(os.path.dirname(__file__), 'src')
+BASE_DIR = os.path.join(os.path.dirname(__file__))
 sys.path.append(BASE_DIR)
 
-from manage import manager
+from app import app
 waitress.serve(
-    manager,
+    app,
     host='0.0.0.0',
     port=os.getenv('PORT'),
     cleanup_interval=os.getenv('CLEANUP_INTERVAL', 20),
