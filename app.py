@@ -43,8 +43,5 @@ from routes import *
 
 if __name__ == '__main__':
     db.create_all()
-    x = User("test", "test@gmail.com")
-    db.session.add(x)
-    db.session.commit()
     app.debug=True
     app.run()
