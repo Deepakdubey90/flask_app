@@ -48,3 +48,4 @@ if __name__ == '__main__':
     db.session.add(x)
     db.session.commit()
     app.debug=True
+    app.run()
