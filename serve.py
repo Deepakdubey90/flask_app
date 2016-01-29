@@ -7,7 +7,7 @@ sys.path.append(BASE_DIR)
 
 from manage import manager
 waitress.serve(
-    app,
+    manager,
     host='0.0.0.0',
     port=os.getenv('PORT'),
     cleanup_interval=os.getenv('CLEANUP_INTERVAL', 20),
