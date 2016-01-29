@@ -42,10 +42,11 @@ manager.create_api(User, methods=['GET', 'POST', 'PUT', 'DELETE'])
 from routes import *
 
 if __name__ == '__main__':
+    os.environ['APP_SETTINGS']="config.DevelopmentConfig"
     db.create_all()
-
     x = User("test", "test@gmail.com")
     db.session.add(x)
     db.session.commit()
     app.debug=True
-    app.run()
+else:
+    os.environ['APP_SETTINGS']="config.ProductionConfig"
