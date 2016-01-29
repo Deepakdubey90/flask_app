@@ -1,10 +1,11 @@
-from app import app, db
+from app import app, db, mail
 from flask import Flask, render_template, request, json, flash, redirect, url_for
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.login import LoginManager
 from werkzeug import generate_password_hash, check_password_hash
 from flask.ext.sqlalchemy import SQLAlchemy
 from models import User
+from flask_mail import Mail, Message
 from form import SigninForm, SignupForm
 
 
@@ -21,6 +22,7 @@ def signUp():
         form = SignupForm(request.form)
         print("form validate", form.validate())
         print("form errors", form.errors)
+
         if form.validate()==False:
             print("form errors", form.errors)
             return render_template('signup.html', form=form)
@@ -35,6 +37,12 @@ def signUp():
             )
             db.session.add(user)
             db.session.commit()
+            msg = Message(
+                'Hello'+' '+form.firstname.data+' '+form.lastname.data,
+                sender='deepak.dubey@vertisinfotech.com',
+                recipients=[form.email.data])
+            msg.body = 'Thanks for signup , we will get in touch with you soon!!!'
+            mail.send(msg)
             user = User.query.all()
             print("users are :: ", user)
             print("@@@@@@@@@@@ redirected to showSignIn part")
