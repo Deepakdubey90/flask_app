@@ -22,7 +22,6 @@ def signUp():
         form = SignupForm(request.form)
         print("form validate", form.validate())
         print("form errors", form.errors)
-
         if form.validate()==False:
             print("form errors", form.errors)
             return render_template('signup.html', form=form)
@@ -59,7 +58,8 @@ def signIn():
         return render_template('signin.html')
     elif request.method == 'POST':
         form = SigninForm(request.form)
-        if form.validate==False:
+        print("value of form.validate:::::", form.validate())
+        if form.validate()==False:
             return render_template('signin.html')
         else:
             user = User.query.filter_by(username=form.username.data)

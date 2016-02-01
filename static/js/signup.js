@@ -1,3 +1,4 @@
+/*
 $(function() {
     $('#btnSignUp').click(function() {
 	console.log("signUp clicked!!!")
@@ -38,3 +39,4 @@ $(function() {
     });
 
 });
+*/

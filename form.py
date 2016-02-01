@@ -2,7 +2,7 @@ import flask_wtf
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from models import db, User
-from wtforms.validators import DataRequired, Email, Length
+from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
 class SignupForm(Form):

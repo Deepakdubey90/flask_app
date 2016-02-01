@@ -37,10 +37,10 @@ class User(db.Model):
         return unicode(self.id)
 
     def set_password(self, password):
-        self.pwdhash = generate_password_hash(password)
+        self.password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.pwdhash, password)
+        return check_password_hash(self.password, password)
 
     def __repr__(self):
         return '<username {}>'.format(self.username)
