@@ -1,6 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-os.environ['DATABASE_URL'] = 'sqlite:///' + os.path.join(basedir, 'app.db')
+os.environ['DATABASE_URL'] = 'postgresql+psycopg2://scott:tiger@localhost/mydatabase' #'sqlite:///' + os.path.join(basedir, 'app.db')
 
 class Config(object):
     DEBUG = False
