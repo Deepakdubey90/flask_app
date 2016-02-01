@@ -16,7 +16,6 @@ os.environ['APP_SETTINGS']="config.DevelopmentConfig"
 app = flask.Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 
-app = Flask(__name__, static_url_path='/static')
 CsrfProtect(app)
 
 # updateing mail_configuration.
