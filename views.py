@@ -26,7 +26,7 @@ def signUp():
             print("form errors", form.errors)
             return render_template('signup.html', form=form)
         else:
-            #import pdb;pdb.set_trace();
+            import pdb;pdb.set_trace();
             user = User(
                 username=form.username.data,
                 password=form.password.data,
