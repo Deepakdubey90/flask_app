@@ -12,7 +12,10 @@ from flask_wtf.csrf import CsrfProtect
 import config
 
 
-os.environ['APP_SETTINGS']="config.DevelopmentConfig"
+if os.environ['DATABASE_URL'] is None:
+    os.environ['APP_SETTINGS']="config.ProductionConfig"
+os.environ['APP_SETTINGS'] = "config.DevelopmentConfig"
+
 app = flask.Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 
