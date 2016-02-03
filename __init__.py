@@ -50,7 +50,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
-from models import User # specify the models which you have defined.
+import models # specify the models which you have defined.
 import views  # specify the views which already defined.
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3')
@@ -62,7 +62,7 @@ manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
 
-manager.create_api(User, methods=['GET', 'POST', 'PUT', 'DELETE'])
+manager.create_api(models.User, methods=['GET', 'POST', 'PUT', 'DELETE'])
 
 #******************************************************
 
