@@ -20,8 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 try:
     from local import *
     os.environ['APP_SETTINGS'] = "local.DevelopmentConfig"
+    print("called in local")
+    print(os.environ['DATABASE_URL'])
 except ImportError as e:
     from production import *
+    print("called in production")
     os.environ['APP_SETTINGS'] = "production.ProductionConfig"
 
 app = flask.Flask(__name__)
