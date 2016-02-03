@@ -18,4 +18,4 @@ __pycache__/*
 *.pyo
 media
 asset
-
+local.py

@@ -1,5 +1,5 @@
 import config
-from app import app, db
+from __init__ import app, db
 from flask import Flask, render_template, request, json, flash, redirect, url_for
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.login import LoginManager
