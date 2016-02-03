@@ -1,4 +1,6 @@
 import os
+import psycopg2
+import urlparse
 from config import Config
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -12,3 +14,10 @@ class ProductionConfig(Config):
     DEBUG_TB_ENABLED = False
     STRIPE_SECRET_KEY = 'foo'
     STRIPE_PUBLISHABLE_KEY = 'bar'
+
+    conn = psycopg2.connect(
+        database='postgres://username:1234@localhost/app',
+        user='test',
+        password='test',
+        host=5432,
+        port=os.getenv('PORT'))
