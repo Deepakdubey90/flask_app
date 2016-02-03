@@ -2,7 +2,7 @@ import os
 from config import Config
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-os.environ['DATABASE_URL'] = 'postgres://username:pass1234/app'
+os.environ['DATABASE_URL'] = 'postgres://username:1234@localhost/app'
 
 class ProductionConfig(Config):
     DEBUG = False
