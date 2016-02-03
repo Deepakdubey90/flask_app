@@ -1,7 +1,12 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-os.environ['DATABASE_URL'] = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+if __name__ == '__main__':
+    os.environ['DATABASE_URL'] = 'sqlite:///' + os.path.join(basedir, 'app.db')
+else:
+    os.environ['DATABASE_URL'] = 'postgres://localhost/main'
 
 class Config(object):
     DEBUG = False
@@ -28,7 +33,7 @@ class ProductionConfig(Config):
     DEBUG = False
     SECRET_KEY = 'my_precious'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://scott:tiger@localhost/app'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] #'postgresql+psycopg2://scott:tiger@localhost/app'
     DEBUG_TB_ENABLED = False
     STRIPE_SECRET_KEY = 'foo'
     STRIPE_PUBLISHABLE_KEY = 'bar'

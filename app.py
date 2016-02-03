@@ -12,9 +12,9 @@ from flask_wtf.csrf import CsrfProtect
 import config
 
 
-if os.environ['DATABASE_URL'] is None:
-    os.environ['APP_SETTINGS']="config.ProductionConfig"
-os.environ['APP_SETTINGS'] = "config.DevelopmentConfig"
+if __name__ == '__main__':
+    os.environ['APP_SETTINGS'] = "config.DevelopmentConfig"
+os.environ['APP_SETTINGS']="config.ProductionConfig"
 
 app = flask.Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -32,7 +32,6 @@ app.config.update(dict(
     MAIL_PASSWORD = 'hpjefjctuctmeqoe'
 ))
 mail=Mail(app)
-
 csrf = CsrfProtect()
 
 login_manager = LoginManager()
@@ -40,7 +39,7 @@ login_manager.init_app(app)
 
 db = SQLAlchemy(app)
 from models import User # specify the models which you have defined.
-import views
+import views  # specify the views which already defined.
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3')
 
@@ -50,6 +49,7 @@ manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
+
 manager.create_api(User, methods=['GET', 'POST', 'PUT', 'DELETE'])
 
 #******************************************************
