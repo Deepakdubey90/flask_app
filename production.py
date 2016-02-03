@@ -19,5 +19,5 @@ class ProductionConfig(Config):
         database='postgres://username:1234@localhost/app',
         user='test',
         password='test',
-        host=5432,
+        host='0.0.0.0',
         port=os.getenv('PORT'))
