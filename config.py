@@ -4,11 +4,9 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    DEBUG = False
-    TESTING = False
-    CSRF_ENABLED = True
-    SECRET_KEY = 'secret-key'
-
+    """
+    should contain common configuration part.
+    """
     # mail settings
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 875
