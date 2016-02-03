@@ -2,7 +2,7 @@ import os
 from config import Config
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-os.environ['DATABASE_URL'] = 'postgresql+psycopg2:///mydatabase'
+os.environ['DATABASE_URL'] = 'postgresql+psycopg2:///test_tb'
 
 class ProductionConfig(Config):
     DEBUG = False
