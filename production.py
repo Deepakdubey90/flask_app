@@ -14,10 +14,3 @@ class ProductionConfig(Config):
     DEBUG_TB_ENABLED = False
     STRIPE_SECRET_KEY = 'foo'
     STRIPE_PUBLISHABLE_KEY = 'bar'
-
-    conn = psycopg2.connect(
-        database='postgres://username:1234@localhost/app',
-        user='test',
-        password='test',
-        host='0.0.0.0',
-        port=os.getenv('PORT'))
