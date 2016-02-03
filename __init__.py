@@ -25,6 +25,7 @@ try:
 except ImportError as e:
     from production import *
     print("called in production")
+    print(os.environ['DATABASE_URL'])
     os.environ['APP_SETTINGS'] = "production.ProductionConfig"
 
 app = flask.Flask(__name__)
