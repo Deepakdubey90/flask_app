@@ -69,4 +69,4 @@ manager.create_api(models.User, methods=['GET', 'POST', 'PUT', 'DELETE'])
 from routes import *
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
