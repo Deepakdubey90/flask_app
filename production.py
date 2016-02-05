@@ -13,3 +13,10 @@ class ProductionConfig(Config):
     DEBUG_TB_ENABLED = False
     STRIPE_SECRET_KEY = 'foo'
     STRIPE_PUBLISHABLE_KEY = 'bar'
+    SQLALCHEMY_TRACK_MODIFICATIONS =True
+
+    ADMINS = [
+        '"Deepak" <deepak.dubey@vertisinfotech.com>',
+    ]
+    # Web-server related settings
+    PORT_NUMBER= 5000
