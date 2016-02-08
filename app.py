@@ -10,6 +10,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 import flask.ext.restless
 from flask_mail import Mail, Message
+#from models import User
+#import views
+#import models
 from flask_wtf.csrf import CsrfProtect
 import config
 
@@ -50,19 +53,18 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
-import models # specify the models which you have defined.
-import views  # specify the views which already defined.
+db.create_all()
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3')
 
 #*******************************************************
 # Create the Flask-Restless API manager.
-manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
+#manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
 
-manager.create_api(models.User, methods=['GET', 'POST', 'PUT', 'DELETE'])
+#manager.create_api(models.User, methods=['GET', 'POST', 'PUT', 'DELETE'])
 
 #******************************************************
 
