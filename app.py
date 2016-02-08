@@ -1,23 +1,16 @@
-import datetime
-import logging
 import os
 import flask
-from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.login import LoginManager
 from flask import Flask, render_template, request, json, flash, redirect, url_for
-from werkzeug import generate_password_hash, check_password_hash
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 import flask.ext.restless
 from flask_mail import Mail, Message
-#from models import User
-#import views
-#import models
+from models import User
+import views
 from flask_wtf.csrf import CsrfProtect
 import config
 
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Include the right settings
 try:
@@ -33,8 +26,6 @@ except ImportError as e:
 
 app = flask.Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
-
-CsrfProtect(app)
 
 # updateing mail_configuration.
 app.config.update(dict(
