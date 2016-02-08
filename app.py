@@ -37,7 +37,7 @@ app.config.update(dict(
 ))
 
 mail=Mail(app)
-csrf = CsrfProtect()
+csrf = CsrfProtect(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
