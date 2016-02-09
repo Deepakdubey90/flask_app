@@ -1,3 +1,6 @@
+"""
+Form module for required validation.
+"""
 import flask_wtf
 from flask_wtf import Form
 from wtforms import StringField, PasswordField

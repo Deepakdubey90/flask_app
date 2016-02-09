@@ -2,16 +2,15 @@ import os
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 import flask.ext.restless
-import config
 from app import app, db
 from models import User
 import views
+import urls
 
 
 app.config.from_object(os.environ['APP_SETTINGS'])
 migrate = Migrate(app, db)
 manager = Manager(app)
-
 
 #*******************************************************
 # Create the Flask-Restless API manager.

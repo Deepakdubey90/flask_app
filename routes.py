@@ -1,68 +1,5 @@
-import config
-from app import app, db
-from flask import Flask, render_template, request, json, flash, redirect, url_for
-from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask.ext.login import LoginManager
-from werkzeug import generate_password_hash, check_password_hash
-from flask.ext.sqlalchemy import SQLAlchemy
-from models import User
-
-
-# routing configuration.
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-@app.route('/')
-def index():
-    """
-    Displays the index page accessible at '/'
-    """
-    return render_template('index.html')
-
-@app.route('/hello/<name>/')
-def hello(name):
-    """
-    Displays the page greats who ever comes to visit it.
-    """
-    return render_template('hello.html', name=name)
-
-@app.route('/showServices')
-def showServices():
-    """
-    Display services .
-    """
-    return render_template('services.html')
-
-@app.route('/about')
-def about():
-     """
-     Display portfolio.
-     """
-     return render_template('about.html')
-
-@app.route('/showPortfolio')
-def showPortfolio():
-     """
-     Display portfolio.
-     """
-     return render_template('portfolio.html')
-
-@login_manager.user_loader
-def user_loader(user_id):
-    user = User.query.filter_by(id=user_id)
-    if user.count() == 1:
-        return user.one()
-    return None
-
-@app.errorhandler(404)
-def page_not_found(error):
-    """
-    Display error page if url not matched.
-    """
-    return render_template('error.html')
-
 # create views without Forms validation.
-"""
+'''
 @app.route('/signUp',methods=['GET', 'POST'])
 def signUp():
 # views to make registration.
@@ -130,4 +67,4 @@ def signIn():
             return redirect (url_for('signIn'))
     else:
         return abort(405)
-"""
+'''
