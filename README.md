@@ -12,6 +12,7 @@ Flask App
 * Create a virtualenv ```$ virtualenv venv```
 * Activate it ```$ source venv/bin/activate```
 * Install the required libraries ```$ pip install -r requirements.txt```
+* create local settings by ```$ cp local_settings.py local.py```
 
 ### Database setup
 * Initialize database  ```$ python manage.py db init```
