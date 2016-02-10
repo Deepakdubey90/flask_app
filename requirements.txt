@@ -1,3 +1,5 @@
+Flask-API==0.6.5
+Markdown==2.6.5
 psycopg2==2.5.4
 itsdangerous==0.24
 wsgiref==0.1.2

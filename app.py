@@ -2,7 +2,7 @@
 app module for basic configuration.
 """
 import os
-import flask
+from flask import Blueprint, Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_mail import Mail, Message
@@ -21,7 +21,9 @@ except ImportError as e:
     print(os.environ['DATABASE_URL'])
     os.environ['APP_SETTINGS'] = "production.ProductionConfig"
 
-app = flask.Flask(__name__)
+#app = Flask(__name__)
+app = Flask(__name__, static_folder = os.path.join(os.path.dirname(__file__), "static"))
+
 app.config.from_object(os.environ['APP_SETTINGS'])
 
 # updateing mail_configuration.
