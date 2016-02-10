@@ -12,15 +12,15 @@ Flask App
 * Create a virtualenv ```$ virtualenv venv```
 * Activate it ```$ source venv/bin/activate```
 * Install the required libraries ```$ pip install -r requirements.txt```
-* create local settings by ```$ cp local_settings.py local.py```
+* create local settings by ```$ cp src/settings/local_settings.py src/settings/local.py```
 
 ### Database setup
-* Initialize database  ```$ python manage.py db init```
-* Create migration by running ```$ python manage.py db migrate```
-* Upgrade database by by running ```$ python manage.py db upgrade```
+* Initialize database  ```$ python src/manage.py db init```
+* Create migration by running ```$ python src/manage.py db migrate```
+* Upgrade database by by running ```$ python src/manage.py db upgrade```
 
 ### Running the app
-* ```$ python manage.py runserver```
+* ```$ python src/manage.py runserver```
 
 ### Test data on rest-api
 * show list of all users ```http://127.0.0.1:5000/api/user```
