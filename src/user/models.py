@@ -1,10 +1,11 @@
 from app import db
+from utils.base import BaseModel
 from werkzeug import generate_password_hash, check_password_hash
 
 
-class User(db.Model):
+class User(BaseModel):
     """
-    user models to create user table.
+    should create user table.
     """
     __tablename__ = 'user'
 

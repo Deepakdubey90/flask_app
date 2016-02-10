@@ -3,7 +3,8 @@ Views module .
 """
 from app import app, db, mail
 from flask.views import MethodView
-from flask import Flask, render_template, request, json, flash, redirect, url_for
+from flask import (Flask, render_template, request,
+                   json, flash, redirect, url_for, Blueprint)
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from werkzeug import generate_password_hash, check_password_hash
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -12,6 +13,8 @@ from models import User
 from flask_mail import Mail, Message
 from form import SigninForm, SignupForm
 
+
+views_module = Blueprint('views_module', __name__, static_folder='static', template_folder='templates')
 
 class UserSignUp(MethodView):
     """

@@ -2,7 +2,7 @@
 This module bind views with url.
 """
 from app import app
-import views
+from user import views
 
 
 # urls binding with views.

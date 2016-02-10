@@ -2,24 +2,26 @@
 app module for basic configuration.
 """
 import os
-from flask import Blueprint, Flask
+from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_mail import Mail, Message
 from flask_wtf.csrf import CsrfProtect
-import config
+import settings
+
 
 # Include the right settings
+#import pdb; pdb.set_trace();
 try:
-    from local import *
-    os.environ['APP_SETTINGS'] = "local.DevelopmentConfig"
+    from settings.local import *
+    os.environ['APP_SETTINGS'] = "settings.local.DevelopmentConfig"
     print("called in local")
     print(os.environ['DATABASE_URL'])
 except ImportError as e:
-    from production import *
+    from settings.production import *
     print("called in production")
     print(os.environ['DATABASE_URL'])
-    os.environ['APP_SETTINGS'] = "production.ProductionConfig"
+    os.environ['APP_SETTINGS'] = "settings.production.ProductionConfig"
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
