@@ -11,7 +11,6 @@ import settings
 
 
 # Include the right settings
-#import pdb; pdb.set_trace();
 try:
     from settings.local import *
     os.environ['APP_SETTINGS'] = "settings.local.DevelopmentConfig"
