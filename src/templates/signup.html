@@ -15,14 +15,14 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
-            <li role="presentation"><a href="{{ url_for('about') }}">About</a></li>
-            <li role="presentation"><a href="{{ url_for('showServices') }}">Service</a></li>
-            <li role="presentation"><a href="{{ url_for('showPortfolio') }}">Portfolio</a></li>
+            <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+            <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
+            <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
+            <li role="presentation"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
             {% if current_user.is_authenticated %}
             <li role="presentation" class="active"><a href="/logout">Logout</a></li>
             {% else %}
-            <li role="presentation"><a href="{{ url_for('signIn') }}">Login</a></li>
+            <li role="presentation"><a href="{{ url_for('user.signIn') }}">Login</a></li>
             <li role="presentation" class="active"><a href="/signUp">Register</a></li>
             {% endif %}
           </ul>
@@ -31,7 +31,7 @@
       </div>
       <div class="jumbotron">
         <img src="static/img/signup1.jpg">
-        <form class="form-signin" action="{{ url_for('signUp') }}" method="POST">
+        <form class="form-signin" action="{{ url_for('user.signUp') }}" method="POST">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <label for="inputName" class="sr-only">User Name</label><br>
           <input type="name" name="username" id="userName" class="form-control" placeholder="User Name" required autofocus>

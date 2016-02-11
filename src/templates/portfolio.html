@@ -12,22 +12,22 @@
   <body background="static/img/011.jpg">
     <div class="container">
       <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
-	    <li role="presentation"><a href="{{ url_for('about') }}">About</a></li>
-	    <li role="presentation"><a href="{{ url_for('showServices') }}">Service</a></li>
-	    <li role="presentation" class="active"><a href="{{ url_for('showPortfolio') }}">Portfolio</a></li>
-	    {% if current_user.is_authenticated %}
-	    <li role="presentation"><a href="/logout">Logout</a></li>
-	    <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
-	    {% else %}
-	    <li role="presentation"><a href="{{ url_for('signIn') }}">Login</a></li>
-	    <li role="presentation"><a href="{{ url_for('signUp') }}">Register</a></li>
-	    {% endif %}
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+            <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
+            <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
+            <li role="presentation" class="active"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
+            {% if current_user.is_authenticated %}
+            <li role="presentation"><a href="/logout">Logout</a></li>
+            <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
+            {% else %}
+            <li role="presentation"><a href="{{ url_for('user.signIn') }}">Login</a></li>
+            <li role="presentation"><a href="{{ url_for('user.signUp') }}">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted">@Flask App</h3>
       </div>
       {% block body %}{% endblock %}
     </div>

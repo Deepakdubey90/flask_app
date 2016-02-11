@@ -5,39 +5,39 @@
     <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet"
-	  href="{{url_for('static',
-		filename='signup.css')}}" />
+          href="{{url_for('static',
+                filename='signup.css')}}" />
     <script src="/static/js/jquery-1.11.2.js"></script>
     <script src="/static/js/signup.js"></script>
   </head>
   <body background="static/img/011.jpg">
     <div class="container">
       <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
-	    <li role="presentation"><a href="{{ url_for('about') }}">About</a></li>
-	    <li role="presentation"><a href="{{ url_for('showServices') }}">Service</a></li>
-	    <li role="presentation"><a href="{{ url_for('showPortfolio') }}">Portfolio</a></li>
-	    <li role="presentation" class="active"><a href="signIn">Login</a></li>
-	    <li role="presentation"><a href="{{ url_for('signUp') }}">Register</a></li>
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+            <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
+            <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
+            <li role="presentation"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
+            <li role="presentation" class="active"><a href="signIn">Login</a></li>
+            <li role="presentation"><a href="{{ url_for('user.signUp') }}">Register</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">@Flask App</h3>
       </div>
       <div class="jumbotron">
-	<img src="static/img/signin.png">
-	<form class="form-signin" action="{{ url_for('signIn') }}" method="POST">
-	  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-	  <label for="name" class="sr-only">User Name</label><br>
-	  <input type="name" name="username" id="username" class="form-control" placeholder="User Name" required autofocus><br>
-	  <label for="inputPassword" class="sr-only">Password</label>
-	  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
-	  <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-	</form>
+        <img src="static/img/signin.png">
+        <form class="form-signin" action="{{ url_for('user.signIn') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <label for="name" class="sr-only">User Name</label><br>
+          <input type="name" name="username" id="username" class="form-control" placeholder="User Name" required autofocus><br>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
+          <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
       </div>
       <footer class="footer">
-	<p>&copy; Company 2016</p>
+        <p>&copy; Company 2016</p>
       </footer>
     </div>
   </body>

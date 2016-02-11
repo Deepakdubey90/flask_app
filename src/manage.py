@@ -10,7 +10,6 @@ from feature.models import Feature
 from document.models import Document
 from blog.models import Blog
 from settings import *
-from user.views import *
 import urls
 
 

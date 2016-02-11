@@ -7,29 +7,29 @@
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet"
-	  href="{{url_for('static',
-		filename='signup.css')}}" />
+          href="{{url_for('static',
+                filename='signup.css')}}" />
   </head>
   <body>
     <div class="container">
       <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" ><a href="{{ url_for('index') }}">Home</a></li>
-	    <li role="presentation"><a href="#">About</a></li>
-	    <li role="presentation"><a href="#">Service</a></li>
-	    <li role="presentation"><a href="#">Portfolio</a></li>
-	    <li role="presentation"><a href="showSignIn">Sign In</a></li>
-	    <li role="presentation" class="active"><a href="#">Sign Up</a></li>
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Service</a></li>
+            <li role="presentation"><a href="#">Portfolio</a></li>
+            <li role="presentation"><a href="showSignIn">Sign In</a></li>
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">@Flask App</h3>
       </div>
       <div class="jumbotron">
-	<img src="static/img/404-error.jpg">
+        <img src="static/img/404-error.jpg">
       </div>
       <footer class="footer">
-	<p>&copy; Company 2016</p>
+        <p>&copy; Company 2016</p>
       </footer>
     </div>
   </body>

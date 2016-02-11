@@ -14,7 +14,66 @@ from flask_mail import Mail, Message
 from form import SigninForm, SignupForm
 
 
-views_module = Blueprint('views_module', __name__, static_folder='static', template_folder='templates')
+user_module = Blueprint('user', __name__)
+
+# routing configuration.
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@user_module.route('/')
+def index():
+    """
+    Displays the index page accessible at '/'
+    """
+    return render_template('index.html')
+
+@user_module.route('/hello/<name>/')
+def test(name):
+    """
+    Displays the page greats who ever comes to visit it.
+    """
+    return render_template('hello.html', name=name)
+
+@user_module.route('/showServices')
+def showServices():
+    """
+    Display services .
+    """
+    return render_template('services.html')
+
+@user_module.route('/about')
+def about():
+     """
+     Display portfolio.
+     """
+     return render_template('about.html')
+
+@user_module.route('/showPortfolio')
+def showPortfolio():
+     """
+     Display portfolio.
+     """
+     return render_template('portfolio.html')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """
+    Display error page if url not matched.
+    """
+    return render_template('error.html')
+
+@login_manager.user_loader
+def user_loader(user_id):
+    user = User.query.filter_by(id=user_id)
+    if user.count() == 1:
+        return user.one()
+    return None
+
+@user_module.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('user.index'))
+
 
 class UserSignUp(MethodView):
     """
@@ -50,7 +109,7 @@ class UserSignUp(MethodView):
             user = User.query.all()
             print("users are :: ", user)
             print("@@@@@@@@@@@ redirected to showSignIn part")
-            return redirect(url_for('index'))
+            return redirect(url_for('user.index'))
 
 
 class UserSignIn(MethodView):
@@ -70,57 +129,8 @@ class UserSignIn(MethodView):
             login_user(user.one())
             flash('Welcome back {0}'.format(form.username.data))
             print("@@@@@@@@@@@@Login successfully!!!!!")
-            return redirect(url_for('index'))
+            return redirect(url_for('user.index'))
 
-
-# routing configuration.
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-def index():
-    """
-    Displays the index page accessible at '/'
-    """
-    return render_template('index.html')
-
-def test(name):
-    """
-    Displays the page greats who ever comes to visit it.
-    """
-    return render_template('hello.html', name=name)
-
-def showServices():
-    """
-    Display services .
-    """
-    return render_template('services.html')
-
-def about():
-     """
-     Display portfolio.
-     """
-     return render_template('about.html')
-
-def showPortfolio():
-     """
-     Display portfolio.
-     """
-     return render_template('portfolio.html')
-
-@app.errorhandler(404)
-def page_not_found(error):
-    """
-    Display error page if url not matched.
-    """
-    return render_template('error.html')
-
-@login_manager.user_loader
-def user_loader(user_id):
-    user = User.query.filter_by(id=user_id)
-    if user.count() == 1:
-        return user.one()
-    return None
-
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+# regestering classbased views with blue_print user_module
+user_module.add_url_rule('/signUp', view_func=UserSignUp.as_view('signUp'))
+user_module.add_url_rule('/signIn', view_func=UserSignIn.as_view('signIn'))

@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title>Hello</title>
     <link type="text/css" rel="stylesheet"
-	  href="{{ url_for('static/css/',
-		filename='angular-material.css')}}" />
+          href="{{ url_for('static/css/',
+                filename='angular-material.css')}}" />
   </head>
   <body>
-    <a href="{{ url_for('index') }}"><button>Back</button></a>
+    <a href="{{ url_for('user.index') }}"><button>Back</button></a>
     <center><h2>Hello {{name}}<h2></center>
   </body>
 </html>
