@@ -11,7 +11,10 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from models import User
 from flask_mail import Mail, Message
+from flask.ext.api import status
 from form import SigninForm, SignupForm
+from flask.ext.api.renderers import JSONRenderer
+from flask.ext.api.decorators import set_renderers
 
 
 user_module = Blueprint('user', __name__)

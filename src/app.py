@@ -23,6 +23,10 @@ except ImportError as e:
     os.environ['APP_SETTINGS'] = "settings.production.ProductionConfig"
 
 app = Flask(__name__)
+app.config['DEFAULT_RENDERERS'] = [
+    'flask.ext.api.renderers.JSONRenderer',
+    'flask.ext.api.renderers.BrowsableAPIRenderer',
+]
 app.config.from_object(os.environ['APP_SETTINGS'])
 
 # updateing mail_configuration.
