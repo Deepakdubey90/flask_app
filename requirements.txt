@@ -33,3 +33,4 @@ ecdsa==0.11
 paramiko==1.15.1
 waitress==0.8.10
 Flask-Restless==0.17.0
+marshmallow==2.6.0
