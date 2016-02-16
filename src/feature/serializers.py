@@ -1,28 +1,23 @@
 from marshmallow import Schema, fields, pprint
-from models import User
+from models import Feature
 
 
-class UserSchema(Schema):
+class FeatureSchema(Schema):
     """
-    user schema for serialization & deserialization.
+    feature schema for serialization & deserialization.
     """
     id = fields.Integer()
-    username = fields.Str()
-    first_name = fields.Str()
-    last_name = fields.Str()
-    email = fields.Str()
-    password = fields.Str()
+    slug = fields.Str()
+    name = fields.Str()
+    blog_id = fields.Integer()
 
     class Meta:
-        fields = ("id", "username", "first_name", "last_name", "email")
-        #exclude = ('password',)
+        fields = ("id", "slug", "name", "blog_id", "created_on", "updated_on")
+        exclude = ('blog',)
 
+feature_schema = FeatureSchema()
+def feature_deserializer(data):
+    return feature_schema.load(data).data
 
-user_schema = UserSchema()
-
-def user_deserializer(data):
-    return user_schema.load(data).data
-
-def user_after_get_many(result=None, search_params=None, **kw):
-    #import pdb;pdb.set_trace();
-    result['objects'] = [user_deserializer(obj) for obj in result['objects']]
+def feature_after_get_many(result=None, search_params=None, **kw):
+    result['objects'] = [feature_deserializer(obj) for obj in result['objects']]

@@ -20,6 +20,9 @@ class Blog(BaseModel):
         self.account_number = account_number
         self.url = url
 
+    def __repr__(self):
+        return '<blog_url {})>'.format(self.blog_url)
+
 
 class UserBlog(BaseModel):
     """

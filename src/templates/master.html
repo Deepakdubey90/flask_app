@@ -9,29 +9,29 @@
     <script src="/static/js/jquery-1.11.2.js"></script>
     <script src="/static/js/signup.js"></script>
   </head>
-  <body background="static/img/011.jpg">
+  <body background="static/img/2.jpg">
     <div class="container">
       <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" class="active"><a href="#">Home</a></li>
-	    <li role="presentation"><a href="/about">About</a></li>
-	    <li role="presentation"><a href="/showServices">Service</a></li>
-	    <li role="presentation"><a href="/showPortfolio">Portfolio</a></li>
-	    {% if current_user.is_authenticated %}
-	    <li role="presentation"><a href="/logout">Logout</a></li>
-	    <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
-	    {% else %}
-	    <li role="presentation"><a href="/signIn">Login</a></li>
-	    <li role="presentation"><a href="/signUp">Register</a></li>
-	    {% endif %}
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="/about">About</a></li>
+            <li role="presentation"><a href="/showServices">Service</a></li>
+            <li role="presentation"><a href="/showPortfolio">Portfolio</a></li>
+            {% if current_user.is_authenticated %}
+            <li role="presentation"><a href="/logout">Logout</a></li>
+            <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
+            {% else %}
+            <li role="presentation"><a href="/signIn">Login</a></li>
+            <li role="presentation"><a href="/signUp">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted">@Flask App</h3>
       </div>
       {% if current_user.is_authenticated %}
        <div class="jumbotron">
-	 <h3>Hi, You are Logged in with User Name <strong>{{ current_user.username }}</strong> !!!</h3>
+         <h3>Hi, You are Logged in with User Name <strong>{{ current_user.username }}</strong> !!!</h3>
        </div>
        {% else %}
        {% block body %}{% endblock %}

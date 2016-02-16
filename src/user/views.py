@@ -5,10 +5,11 @@ from app import app, db, mail
 from flask.views import MethodView
 from flask import (Flask, render_template, request,
                    json, flash, redirect, url_for, Blueprint)
-from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask.ext.login import login_user, logout_user, current_user
 from werkzeug import generate_password_hash, check_password_hash
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+from utils.utility import login_required
 from models import User
 from flask_mail import Mail, Message
 from flask.ext.api import status
@@ -38,6 +39,7 @@ def test(name):
     return render_template('hello.html', name=name)
 
 @user_module.route('/showServices')
+@login_required
 def showServices():
     """
     Display services .
@@ -45,6 +47,7 @@ def showServices():
     return render_template('services.html')
 
 @user_module.route('/about')
+@login_required
 def about():
      """
      Display portfolio.
@@ -52,6 +55,7 @@ def about():
      return render_template('about.html')
 
 @user_module.route('/showPortfolio')
+@login_required
 def showPortfolio():
      """
      Display portfolio.

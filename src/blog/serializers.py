@@ -4,7 +4,7 @@ from models import Blog
 
 class BlogSchema(Schema):
     """
-    user schema for serialization & deserialization.
+    blog schema for serialization & deserialization.
     """
     id = fields.Integer()
     account_number = fields.Str()
