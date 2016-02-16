@@ -6,6 +6,7 @@ from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from models import db, User
 from wtforms.validators import DataRequired, Email, Length, EqualTo
+from wtforms import ValidationError
 
 
 class SignupForm(Form):
@@ -23,15 +24,13 @@ class SignupForm(Form):
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
 
-    def validate(self):
-        if not Form.validate(self):
-            return False
-        user = User.query.filter_by(username = self.username.data.lower()).first()
-        if user:
-            self.username.errors.append("This User is already taken")
-            return False
-        else:
-            return True
+    def validate_email(self, email):
+        if User.query.filter_by(email=email.data).first():
+            raise ValidationError('Email already registered.')
+
+    def validate_username(self, username):
+        if User.query.filter_by(username=username.data).first():
+            raise ValidationError('Username already in use.')
 
 
 class SigninForm(Form):
