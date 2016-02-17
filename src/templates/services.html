@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset="utf-8" />
-    <title>{% block title %}{% endblock %} - Hello Flask!</title>
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends "master.html" %}
+{% block title %}Home{% endblock %}
 
-    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <script src="/static/js/jquery-1.11.2.js"></script>
-    <script src="/static/js/signup.js"></script>
-  </head>
-  <body background="static/img/011.jpg">
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
-            <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
-            <li role="presentation" class="active"><a href="/showServices">Service</a></li>
-            <li role="presentation"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
-            {% if current_user.is_authenticated %}
-            <li role="presentation"><a href="/logout">Logout</a></li>
-            <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
-            {% else %}
-            <li role="presentation"><a href="{{ url_for('user.signIn') }}">Login</a></li>
-            <li role="presentation"><a href="{{ url_for('user.signUp') }}">Register</a></li>
-            {% endif %}
-          </ul>
-        </nav>
-        <h3 class="text-muted">@Flask App</h3>
-      </div>
-      {% block body %}{% endblock %}
-    </div>
-  </body>
-</html>
+{% block background_image %}
+<body background="static/img/011.jpg">
+  {% endblock %}
+  {% block nav_ul %}
+  <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+  <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
+  <li role="presentation" class="active"><a href="/showServices">Service</a></li>
+  <li role="presentation"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
+  {% endblock %}
+
+  {% block ss %}
+  <li role="presentation"><a href="{{ url_for('user.signIn') }}">SignIn</a></li>
+  <li role="presentation"><a href="{{ url_for('user.signUp') }}">SignUp</a></li>
+  {% endblock %}
+
+  {% block portfolio %}
+  {% endblock %}
+  {% block jumbotron %}
+  {% endblock %}

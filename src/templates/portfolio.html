@@ -1,101 +1,21 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset="utf-8" />
-    <title>{% block title %}{% endblock %} - Hello Flask!</title>
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends "master.html" %}
+{% block title %}Home{% endblock %}
 
-    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <script src="/static/js/jquery-1.11.2.js"></script>
-    <script src="/static/js/signup.js"></script>
-  </head>
-  <body background="static/img/9.jpg">
-    <div class="container">
-      <div class="header">
-	<nav>
-	  <ul class="nav nav-pills pull-right">
-	    <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
-	    <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
-	    <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
-	    <li role="presentation" class="active"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
-	    {% if current_user.is_authenticated %}
-	    <li role="presentation"><a href="/logout">Logout</a></li>
-	    <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
-	    {% else %}
-	    <li role="presentation"><a href="{{ url_for('user.signIn') }}">Login</a></li>
-	    <li role="presentation"><a href="{{ url_for('user.signUp') }}">Register</a></li>
-	    {% endif %}
-	  </ul>
-	</nav>
-	<h3 class="text-muted">@Flask App</h3>
-      </div>
-      {% if current_user.is_authenticated %}
+{% block background_image %}
+<body background="static/img/9.jpg">
+  {% endblock %}
 
-      <div class="jumbotron">
-	<h3><strong> Python Team</strong> !!!</h3>
-      </div>
+  {% block nav_ul %}
+  <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+  <li role="presentation"><a href="{{ url_for('user.about') }}">About</a></li>
+  <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
+  <li role="presentation" class="active"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
+  {% endblock %}
 
-      <div class="row">
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/arun.jpg" alt="Arun Mittal">
-	    <h5>Arun Mittal<br>
-	      <small>Python Lead Developer</small>
-	    </h5>
-	  </a>
-	</div>
+  {% block ss %}
+  <li role="presentation"><a href="{{ url_for('user.signIn') }}">SignIn</a></li>
+  <li role="presentation"><a href="{{ url_for('user.signUp') }}">SignUp</a></li>
+  {% endblock %}
 
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/user.jpg" alt="Pranav Gore">
-	    <h5>Pranav Gore<br>
-	      <small>Python Developer</small>
-	    </h5>
-	  </a>
-	</div>
-
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/sagar.jpg" alt="Sagar Talekar">
-	    <h5>Sagar Talekar<br>
-	      <small>Python Developer</small>
-	    </h5>
-
-	  </a>
-	</div>
-      </div>
-
-      <div class="row">
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/user1.jpg" alt="Siddartrh Sonavane">
-	    <h5>Siddarth Sonavane<br>
-	      <small>Python Developer</small>
-	    </h5>
-	  </a>
-	</div>
-
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/user.jpg" alt="Deepak Kumar Dubey">
-	    <h5>Deepak Kumar Dubey<br>
-	      <small>Python Developer</small>
-	    </h5>
-	  </a>
-	</div>
-
-	<div class="col-xs-6 col-md-4">
-	  <a href="#" class="thumbnail">
-	    <img src="static/img/user.jpg" alt="Deepak Kumar Dubey">
-	    <h5>Swapnil Pandit<br>
-	      <small>Python Developer</small>
-	    </h5>
-	  </a>
-	</div>
-      </div>
-      {% else %}
-      {% block body %}{% endblock %}
-      {% endif %}
-    </div>
-  </body>
-</html>
+  {% block jumbotron %}
+  {% endblock %}

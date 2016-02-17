@@ -4,37 +4,131 @@
     <meta charset="utf-8" />
     <title>{% block title %}{% endblock %} - Hello Flask!</title>
     <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <script src="/static/js/jquery-1.11.2.js"></script>
-    <script src="/static/js/signup.js"></script>
+    <script src="/static/js/signup.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function () {
+      $('.dropdown-toggle').dropdown();
+      });
+    </script>
   </head>
+  {% block background_image %}
   <body background="static/img/2.jpg">
+    {% endblock %}
     <div class="container">
       <div class="header">
 	<nav>
 	  <ul class="nav nav-pills pull-right">
+	    {% block nav_ul %}
 	    <li role="presentation" class="active"><a href="#">Home</a></li>
 	    <li role="presentation"><a href="/about">About</a></li>
 	    <li role="presentation"><a href="/showServices">Service</a></li>
 	    <li role="presentation"><a href="/showPortfolio">Portfolio</a></li>
+	    {% endblock %}
 	    {% if current_user.is_authenticated %}
-	    <li role="presentation"><a href="/logout">Logout</a></li>
-	    <li role="presentation"><a href="#">Welcome <strong>{{ current_user.username }}</strong></a></li>
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+		<strong>{{ current_user.username }}</strong>
+		<span class="caret"></span>
+	      </a>
+	      <ul class="dropdown-menu">
+		<li><a href="{{ url_for('user.about') }}">Profile</a></li>
+		<li><a href="#">Change password</a></li>
+		<li><a href="#">Your Blog</a></li>
+		<li><a href="{{ url_for('user.showPortfolio') }}">Meet Your Team</a></li>
+		<li><a href="#">Invite Freinds</a></li>
+		<li><a href="/logout">Logout</a></li>
+	      </ul>
+	    </li>
 	    {% else %}
-	    <li role="presentation"><a href="/signIn">Login</a></li>
-	    <li role="presentation"><a href="/signUp">Register</a></li>
+	    {% block ss %}
+	    <li role="presentation"><a href="/signIn">SignIn</a></li>
+	    <li role="presentation"><a href="/signUp">SignUp</a></li>
+	    {% endblock %}
 	    {% endif %}
 	  </ul>
 	</nav>
 	<h3 class="text-muted">@Flask App</h3>
       </div>
+      {% block portfolio %}
       {% if current_user.is_authenticated %}
+      <div class="jumbotron">
+	<h3><strong> Python Team</strong> !!!</h3>
+      </div>
+
+      <div class="row">
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/arun.jpg" alt="Arun Mittal">
+	    <h5>Arun Mittal<br>
+	      <small>Python Lead Developer</small>
+	    </h5>
+	  </a>
+	</div>
+
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/user.jpg" alt="Pranav Gore">
+	    <h5>Pranav Gore<br>
+	      <small>Python Developer</small>
+	    </h5>
+	  </a>
+	</div>
+
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/sagar.jpg" alt="Sagar Talekar">
+	    <h5>Sagar Talekar<br>
+	      <small>Python Developer</small>
+	    </h5>
+
+	  </a>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/user1.jpg" alt="Siddartrh Sonavane">
+	    <h5>Siddarth Sonavane<br>
+	      <small>Python Developer</small>
+	    </h5>
+	  </a>
+	</div>
+
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/user.jpg" alt="Deepak Kumar Dubey">
+	    <h5>Deepak Kumar Dubey<br>
+	      <small>Python Developer</small>
+	    </h5>
+	  </a>
+	</div>
+
+	<div class="col-xs-6 col-md-4">
+	  <a href="#" class="thumbnail">
+	    <img src="static/img/user.jpg" alt="Deepak Kumar Dubey">
+	    <h5>Swapnil Pandit<br>
+	      <small>Python Developer</small>
+	    </h5>
+	  </a>
+	</div>
+      </div>
+      {% else %}
+      {% block body %}{% endblock %}
+      {% endif %}
+      {% endblock %}
+
+      {% if current_user.is_authenticated %}
+      {% block jumbotron %}
       <div class="jumbotron">
 	<h3>Hi, You are Logged in with User Name <strong>{{ current_user.username }}</strong> !!!</h3>
       </div>
-       {% else %}
-       {% block body %}{% endblock %}
+      {% endblock %}
+      {% else %}
+      {% block body1 %}{% endblock %}
        {% endif %}
     </div>
   </body>
