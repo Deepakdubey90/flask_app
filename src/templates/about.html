@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 
 {% block background_image %}
-<body background="static/img/012.jpg">
+<body background="static/img/5.jpg">
   {% endblock %}
 
   {% block nav_ul %}
@@ -17,6 +17,24 @@
   {% endblock %}
 
   {% block portfolio %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+	<td>{{ current_user.first_name }}</td>
+	<td>{{ current_user.last_name }}</td>
+	<td>{{ current_user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+
   {% endblock %}
+
   {% block jumbotron %}
   {% endblock %}
