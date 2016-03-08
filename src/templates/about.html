@@ -1,11 +1,11 @@
 {% extends "master.html" %}
 
 {% block background_image %}
-<body background="static/img/5.jpg">
+<body background="static/img/5.jpg"/>
   {% endblock %}
 
   {% block nav_ul %}
-  <li role="presentation" ><a href="{{ url_for('user.index') }}">Home</a></li>
+  <li role="presentation"><a href="{{ url_for('user.index') }}">Home</a></li>
   <li role="presentation" class="active"><a href="/about">About</a></li>
   <li role="presentation"><a href="{{ url_for('user.showServices') }}">Service</a></li>
   <li role="presentation"><a href="{{ url_for('user.showPortfolio') }}">Portfolio</a></li>
@@ -17,6 +17,7 @@
   {% endblock %}
 
   {% block portfolio %}
+
   <table class="table table-hover">
     <thead>
       <tr>
@@ -26,11 +27,13 @@
       </tr>
     </thead>
     <tbody>
+      {% for current_user in users %}
       <tr>
 	<td>{{ current_user.first_name }}</td>
 	<td>{{ current_user.last_name }}</td>
 	<td>{{ current_user.email }}</td>
       </tr>
+      {% endfor %}>
     </tbody>
   </table>
 
